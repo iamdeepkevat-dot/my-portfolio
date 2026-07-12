@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Me - Deep Kevat</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet" />
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="icon" href="images1/dk-logo.png" type="image/png" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .header-fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 20px 0;
+        }
+
+        .header-fixed.navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 10px 0;
+        }
+
+        .logo-secondary {
+            opacity: 0;
+            transform: scale(0.7);
+            display: none;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .navbar-scrolled .logo-primary {
+            display: none !important;
+        }
+
+        .navbar-scrolled .logo-secondary {
+            display: inline-block !important;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #fff !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-scrolled .nav-link {
+            color: #111 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #d72815;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #d72815 !important;
+        }
+
+        .navbar-scrolled .nav-social-box a {
+            color: #111 !important;
+        }
+
+        .nav-social-box a {
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .nav-social-box a:hover {
+            color: #d72815 !important;
+        }
+
+        .page-header {
+            min-height: 300px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('images1/bg-1.jpg') no-repeat center/100% 100%;
+            padding-top: 120px;
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .sec-pad {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #d72815;
+        }
+
+        #main-contact-form .form-control {
+            height: 45px;
+            border-radius: 0px !important;
+            border: none !important;
+            border-bottom: 1px solid #ccc !important;
+            padding: 10px 0px !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            transition: border-color 0.3s ease;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        #main-contact-form .form-control:focus {
+            border-bottom-color: #d72815 !important;
+        }
+
+        #main-contact-form textarea.form-control {
+            height: auto !important;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        #main-contact-form label {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 2px;
+        }
+
+        .btn-submit {
+            background: #d72815 !important;
+            color: #fff !important;
+            padding: 14px 35px;
+            font-weight: 500;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+
+            text-align: left;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit:hover {
+            background: #b11f11 !important;
+            box-shadow: 0 8px 20px rgba(177, 31, 17, 0.25);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: #d72815;
+            color: #fff;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+            font-weight: 600;
+        }
+
+        .btn-back:hover {
+            background: #b11f11;
+        }
+
+        .horizontal-contact-details a {
+            transition: color 0.3s ease;
+        }
+
+        .horizontal-contact-details a:hover {
+            color: #d72815 !important;
+        }
+
+        .horizontal-contact-details .social-circle-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #2a2a2a;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0 6px;
+        }
+
+        .horizontal-contact-details .social-circle-icon:hover {
+            background: #d72815;
+            transform: translateY(-3px);
+            color: #fff !important;
+        }
+
+        .navbar-toggler-btn {
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            .header-fixed {
+                background: rgba(255, 255, 255, 0.98) !important;
+                padding: 12px 15px !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-link {
+                color: #111 !important;
+            }
+
+            .nav-social-box {
+                display: none !important;
+            }
+
+            .mobile-menu-container {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-15px);
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu-container.show-menu {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+            }
+
+            .nav.justify-content-center {
+                flex-direction: column !important;
+                align-items: center;
+            }
+
+            .nav-item {
+                margin: 10px 0 !important;
+            }
+
+            .navbar-toggler-btn {
+                display: block !important;
+                background: none;
+                border: none;
+                font-size: 24px;
+                color: #111 !important;
+                cursor: pointer;
+                padding: 5px;
+                outline: none !important;
+                transition: transform 0.3s ease;
+            }
+
+            .logo-primary {
+                display: block !important;
+                max-width: 110px !important;
+            }
+
+            .logo-secondary {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-fixed" id="dynamicNavbar">
+        <div class="container-fluid px-md-5">
+            <div class="row align-items-center justify-content-between"
+                style="padding: 0; display: flex; width: 100%; margin: 0;">
+                <div style="flex: 0 0 auto;">
+                    <a href="index.html" class="d-inline-block">
+                        <img src="images1/DEEP LOGO.png" class="logo-primary" alt="Primary Logo"
+                            style="max-width: 130px; height: auto;" />
+                        <img src="images1/dk-logo.png" class="logo-secondary" alt="Sticky Logo"
+                            style="max-width: 100px; height: auto;" />
+                    </a>
+                </div>
+                <button class="navbar-toggler-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+                <div class="col-lg-8 text-center mobile-menu-container" id="navbarMenuContainer">
+                    <nav class="d-inline-block">
+                        <ul class="nav justify-content-center" style="margin: 0; padding: 0; list-style: none;">
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
+                                    href="index.html#home">Home</a></li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
+                                    href="index.html#about">About</a></li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link" href="music.html">Music</a>
+                            </li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
+                                    href="videos.html">Videos</a></li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
+                                    href="biography.html">Biography</a></li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
+                                    href="events.html">Events</a></li>
+                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link active"
+                                    href="contact.html">Contact Me</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="nav-social-box" style="flex: 0 0 auto;">
+                    <div class="d-inline-block" style="font-size: 15px;">
+                        <a href="https://www.facebook.com/deepkevatofficial" target="_blank"
+                            style="margin-left: 14px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/deepkevat" target="_blank" style="margin-left: 14px;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/deep_kevat" target="_blank" style="margin-left: 14px;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@deepkevat" target="_blank" style="margin-left: 14px;"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container" style="text-align: left;">
+
+            <h1 class="page-title">CONTACT ME</h1>
+        </div>
+    </section>
+
+    <section class="sec-pad">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 mb-5">
+                    <div class="form-box"
+                        style="padding: 45px 40px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid #eee;">
+                        <form id="main-contact-form">
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-4">
+                                    <label for="first_name">Name *</label>
+                                    <input type="text" id="first_name" name="first_name" class="form-control"
+                                        required />
+                                </div>
+                                <div class="col-md-6 form-group mb-4">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required />
+                                </div>
+                                <div class="col-md-6 form-group mb-4">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" id="phone" name="phone" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            </div>
+
+                            <div class="row align-items-center mb-4">
+                                <div class="col-6 col-sm-2 d-flex align-items-center">
+                                    <div id="captchaDisplay"
+                                        style="font-weight: 700; font-size: 1.15rem; background: #f3f3f3; padding: 6px 14px; border-radius: 4px; letter-spacing: 4px; font-style: italic; text-align: center; border: 1px solid #ddd; user-select: none; width: 100%; color: #333;">
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-light ml-2" onclick="generateCaptcha()"
+                                        style="border: 1px solid #ddd; padding: 7px 10px;"><i
+                                            class="fas fa-sync-alt"></i></button>
+                                </div>
+                                <div class="col-6 col-sm-2">
+                                    <input type="text" id="captchaInput" class="form-control"
+                                        placeholder="Enter Captcha Code *" required style="height: 38px !important;" />
+                                </div>
+                            </div>
+
+                            <p style="font-size: 0.9rem; color: #111; font-weight: 700; margin-bottom: 25px;">
+                                Note: <span style="font-weight: 400; color: #444;">Fields marked with * are
+                                    required.</span>
+                            </p>
+
+                            <div class="text-left">
+                                <button type="submit" class="btn-submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mt-2">
+                    <div class="horizontal-contact-details text-center"
+                        style="background: #1a1a1a; color: #fff; padding: 45px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-4 mb-4 mb-md-0" style="border-right: 1px solid #333;">
+                                <p class="section-title" style="color: #ffffff; font-size: 0.8rem; margin-bottom: 8px;">
+                                    Email Address</p>
+                                <a href="mailto:deepkevat41@gmail.com"
+                                    style="color: #fff; font-size: 1.05rem; font-weight: 500;">
+                                    <i class="fas fa-envelope"
+                                        style="color: #ffffff; margin-right: 8px;"></i>ideepkevat@gmail.com
+                                </a>
+                            </div>
+
+                            <div class="col-md-4 mb-4 mb-md-0" style="border-right: 1px solid #333;">
+                                <p class="section-title" style="color: #ffffff; font-size: 0.8rem; margin-bottom: 8px;">
+                                    Phone Number</p>
+                                <a href="tel:+919352170828" style="color: #fff; font-size: 1.05rem; font-weight: 500;">
+                                    <i class="fas fa-phone-alt" style="color: #ffffff; margin-right: 8px;"></i>+91 93521
+                                    70828
+                                </a>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p class="section-title"
+                                    style="color: #f7f2f1; font-size: 0.8rem; margin-bottom: 12px;">Social Profiles</p>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <a href="https://www.facebook.com/deepkevatofficial" target="_blank"
+                                        class="social-circle-icon"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/deepkevat" target="_blank"
+                                        class="social-circle-icon"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://x.com/deep_kevat" target="_blank" class="social-circle-icon"><i
+                                            class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sub-footer-new"
+        style="background: #6e2424; color: #fff; padding: 60px 0 30px 0; border-top: 1px solid #1a1a1a; font-family: 'Ubuntu', sans-serif;">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="footer-inline-nav" style="font-size: 14px; letter-spacing: 0.05em; font-weight: 500;">
+                        <a href="index.html#home" style="color: #fff; transition: 0.3s;">Home</a>
+                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+                        <a href="index.html#about" style="color: #fff; transition: 0.3s;">About</a>
+                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+                        <a href="music.html" style="color: #fff; transition: 0.3s;">Music</a>
+                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+                        <a href="videos.html" style="color: #fff; transition: 0.3s;">Videos</a>
+                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+                        <a href="biography.html" style="color: #fff; transition: 0.3s;">Biography</a>
+                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+                        <a href="events.html" style="color: #fff; transition: 0.3s;">Events</a>
+                        <span style="color: #ffffff ; margin: 0 12px;">•</span>
+                        <a href="contact.html" style="color: #fff; transition: 0.3s;">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="footer-social-strip"
+                        style="display: flex; justify-content: center; align-items: center; gap: 24px; font-size: 20px;">
+                        <a href="https://www.facebook.com/deepkevatofficial" target="_blank" style="color: #fff;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/deepkevat" target="_blank" style="color: #fff;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/deep_kevat" target="_blank" style="color: #fff;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@deepkevat" target="_blank" style="color: #fff;"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://spotify.com" target="_blank" style="color: #fff;"><i
+                                class="fab fa-spotify"></i></a>
+                        <a href="https://soundcloud.com" target="_blank" style="color: #fff;"><i
+                                class="fab fa-soundcloud"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5 justify-content-center">
+                <div class="col-12 col-md-8 col-lg-7">
+                    <form class="footer-quick-mail-form"
+                        style="display: flex; width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <input type="hidden" name="access_key" value="ca895dc4-00d1-4ad9-a928-1126fb597b1a">
+                        <input type="hidden" name="subject" value="New Quick Footer Message from Website">
+                        <input type="text" name="message" placeholder="Leave Message here!" required
+                            style="flex-grow: 1; border: none; padding: 15px 20px; font-size: 0.95rem; color: #333; background: #fff; outline: none;" />
+                        <button type="submit"
+                            style="background: #1a1a1a; color: #fff; border: none; width: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: 0.3s;"
+                            onmouseover="this.style.background='#d72815'" onmouseout="this.style.background='#1a1a1a'">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row align-items-center pt-3" style="border-top: 1px solid #151515;">
+                <div class="col-md-6 text-left mb-3 mb-md-0">
+                    <p style="margin: 0; font-size: 1rem; color: #ffffff; letter-spacing: 0.05em;">&copy; 2026 DEEP
+                        KEVAT. ALL RIGHTS RESERVED.</p>
+                </div>
+                <div class="col-md-6 text-md-right text-left">
+                    <img src="images1/signature1.png" alt="Signature"
+                        style="max-height: 70px; width: auto; filter: invert(1) brightness(0.7);" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Section -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        let currentCaptcha = "";
+        function generateCaptcha() {
+            const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let code = "";
+            for (let i = 0; i < 6; i++) {
+                code += chars[Math.floor(Math.random() * chars.length)];
+            }
+            currentCaptcha = code;
+            document.getElementById("captchaDisplay").innerText = currentCaptcha;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            generateCaptcha();
+        });
+
+        window.addEventListener('scroll', function () {
+            var navbar = document.getElementById('dynamicNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        document.getElementById('menuToggleBtn').addEventListener('click', function () {
+            var menu = document.getElementById('navbarMenuContainer');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('show-menu');
+
+            if (menu.classList.contains('show-menu')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                this.style.transform = 'rotate(90deg)';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                this.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        document.getElementById('main-contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('captchaInput').value.trim();
+            if (inputVal !== currentCaptcha) {
+                alert("Error: Invalid Captcha Code. Please try again!");
+                generateCaptcha();
+                document.getElementById('captchaInput').value = "";
+                return false;
+            }
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: 'ca895dc4-00d1-4ad9-a928-1126fb597b1a',
+                    name: document.getElementById('first_name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                })
+            })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        alert("Thank you! Your message has been sent successfully.");
+                        document.getElementById('main-contact-form').reset();
+                        generateCaptcha();
+                    } else {
+                        alert("Oops! something went wrong.");
+                    }
+                })
+                .catch(() => alert("Server Error."))
+                .then(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        $(document).on('submit', '.footer-quick-mail-form', function (e) {
+            e.preventDefault();
+            const form = this;
+            const submitBtn = $(form).find('button');
+            submitBtn.html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: $(form).find('input[name="access_key"]').val(),
+                    subject: $(form).find('input[name="subject"]').val(),
+                    message: $(form).find('input[name="message"]').val()
+                })
+            })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        alert("Thank you! Your quick message has been sent successfully.");
+                        form.reset();
+                    } else {
+                        alert("Oops! Something went wrong.");
+                    }
+                })
+                .catch(() => alert("Server Error."))
+                .then(() => {
+                    submitBtn.html('<i class="fas fa-chevron-right"></i>').prop('disabled', false);
+                });
+        });
+    </script>
+</body>
+
+</html>
