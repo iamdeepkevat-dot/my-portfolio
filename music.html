@@ -118,15 +118,15 @@
         }
 
         .page-header {
-            min-height: 300px;
+            min-height: 60vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #fff;
-            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('images1/bg-1.jpg') no-repeat center/100% 100%;
-            padding-top: 120px;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('images1/bg-1.jpg') no-repeat center/cover;
+            padding-top: 200px;
         }
 
         .page-title {
@@ -201,6 +201,18 @@
             display: none;
         }
 
+        .footer-inline-nav a:hover {
+            color: #d72815 !important;
+        }
+
+        .footer-social-strip a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-strip a:hover {
+            color: #d72815 !important;
+        }
+
         @media (max-width: 991px) {
             .header-fixed {
                 background: rgba(255, 255, 255, 0.98) !important;
@@ -257,13 +269,27 @@
                 transition: transform 0.3s ease;
             }
 
+            /* --- मोबाइल स्क्रीन पर आते ही सेकंडरी लोगो दिखाने का तुरंत फिक्स --- */
+
+            /* 1. मोबाइल पर प्राइमरी लोगो को हमेशा के लिए बंद कर दें */
             .logo-primary {
-                display: block !important;
-                max-width: 110px !important;
+                display: none !important;
             }
 
+            /* 2. मोबाइल पर सेकंडरी लोगो को शुरुआत से ही (बिना स्क्रॉल किए भी) दिखाएं */
             .logo-secondary {
-                display: none !important;
+                display: inline-block !important;
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                max-width: 100px !important;
+                /* मोबाइल के लिए एकदम सही साइज */
+            }
+
+            /* 3. स्क्रॉल होने के बाद भी सेकंडरी लोगो को दिखने दें */
+            .navbar-scrolled .logo-secondary {
+                display: inline-block !important;
+                opacity: 1 !important;
+                transform: scale(1) !important;
             }
         }
     </style>
@@ -288,14 +314,14 @@
                         <ul class="nav justify-content-center" style="margin: 0; padding: 0; list-style: none;">
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
                                     href="index.html#home">Home</a></li>
-                            <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
-                                    href="index.html#about">About</a></li>
+
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link active"
                                     href="music.html">Music</a></li>
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
                                     href="videos.html">Videos</a></li>
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
                                     href="biography.html">Biography</a></li>
+
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link"
                                     href="events.html">Events</a></li>
                             <li class="nav-item" style="margin: 0 10px;"><a class="nav-link" href="contact.html">Contact
@@ -327,7 +353,6 @@
 
     <section class="sec-pad">
         <div class="container">
-
             <div class="text-center mb-5">
                 <p class="section-title">Music</p>
                 <h2 class="section-heading">A curated selection of original songs</h2>
@@ -350,26 +375,24 @@
                     <p class="track-title">Track 3 - Title Name</p>
                     <p style="color:#888;font-size:0.9rem;">Original Composition</p>
                 </div>
-
                 <div class="col-sm-6 col-lg-4 portfolio-item">
                     <img src="images1/song-poster/4.jpg" alt="Track 4" />
                     <p class="track-title">Track 4 - Title Name</p>
                     <p style="color:#888;font-size:0.9rem;">Original Composition</p>
                 </div>
-
                 <div class="col-sm-6 col-lg-4 portfolio-item">
                     <img src="images1/song-poster/5.jpg" alt="Track 5" />
                     <p class="track-title">Track 5 - Title Name</p>
                     <p style="color:#888;font-size:0.9rem;">Original Composition</p>
-
                 </div>
                 <div class="col-sm-6 col-lg-4 portfolio-item">
                     <img src="images1/song-poster/6.jpg" alt="Track 6" />
                     <p class="track-title">Track 6 - Title Name </p>
                     <p style="color:#888;font-size:0.9rem;">Original Composition</p>
-                    <P style="color:#888;font-size:0.9rem;">Release Date: 2026</P>
-
+                    <p style="color:#888;font-size:0.9rem;">Release Date: 2026</p>
                 </div>
+            </div>
+        </div>
     </section>
 
     <div class="sub-footer-new"
@@ -380,14 +403,16 @@
                     <div class="footer-inline-nav" style="font-size: 14px; letter-spacing: 0.05em; font-weight: 500;">
                         <a href="index.html#home" style="color: #fff; transition: 0.3s;">Home</a>
                         <span style="color: #ffffff; margin: 0 12px;">•</span>
-                        <a href="index.html#about" style="color: #fff; transition: 0.3s;">About</a>
-                        <span style="color: #ffffff; margin: 0 12px;">•</span>
+
                         <a href="music.html" style="color: #fff; transition: 0.3s;">Music</a>
                         <span style="color: #ffffff; margin: 0 12px;">•</span>
                         <a href="videos.html" style="color: #fff; transition: 0.3s;">Videos</a>
                         <span style="color: #ffffff; margin: 0 12px;">•</span>
                         <a href="biography.html" style="color: #fff; transition: 0.3s;">Biography</a>
                         <span style="color: #ffffff; margin: 0 12px;">•</span>
+
+
+
                         <a href="events.html" style="color: #fff; transition: 0.3s;">Events</a>
                         <span style="color: #ffffff; margin: 0 12px;">•</span>
                         <a href="contact.html" style="color: #fff; transition: 0.3s;">Contact Me</a>
